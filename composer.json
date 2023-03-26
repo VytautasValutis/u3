@@ -1,0 +1,18 @@
+{
+    "name": "vytas/u3",
+    "description": "U3",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Vytas\\U3\\": "src/",
+            "" : ""
+        }
+    },
+    "authors": [
+        {
+            "name": "Vytautas Valutis",
+            "email": "dnc908@gmail.com"
+        }
+    ],
+    "require": {}
+}
