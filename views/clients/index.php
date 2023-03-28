@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-12 ">
     <div class="card mt-5">
-        <div class="card-header">
+        <div class="card-header text-center">
             <h1>Sąskaitų sąrašas</h1>
         </div>
             <div class="card-body">

@@ -36,6 +36,10 @@ class App {
             return (new ClientsController)->list();
         } 
 
+        if($method == 'GET' && count($url) == 2 && $url[0] === 'list' && $url[1] === 'create') {
+            return (new ClientsController)->create();
+        } 
+
 
         else {
             return '404 PAGE NOT FOUND';
