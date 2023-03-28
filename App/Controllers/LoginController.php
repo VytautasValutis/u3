@@ -15,7 +15,7 @@ class LoginController {
     public function login() 
     {
         if(Auth::get()->login($_POST['name'], $_POST['psw'])) {
-            return App::redirect('clients');
+            return App::redirect('list');
         }
         return App::redirect('login');
     }

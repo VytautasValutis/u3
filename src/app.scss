@@ -6,3 +6,24 @@ body {
 }
 
 @import 'home';
+
+.msg-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 30px;
+    .msg-bin {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+    }
+}
+
+form.logout {
+    display: inline-block;
+    button {
+        border: none;
+        outline: none;
+        background-color: transparent;
+    }
+}

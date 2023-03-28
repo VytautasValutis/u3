@@ -2,13 +2,14 @@
 
 namespace App;
 use App\Controllers\HomeController;
+use App\Controllers\ClientsController;
 use App\Controllers\LoginController;
 
 class App {
     
     public static function process() {
 
-        // session_start();
+        session_start();
         $url = explode('/',$_SERVER['REQUEST_URI']);
         array_shift($url);
 
@@ -31,6 +32,10 @@ class App {
             return (new LoginController)->login();
         } 
 
+        if($method == 'GET' && count($url) == 1 && $url[0] === 'list') {
+            return (new ClientsController)->list();
+        } 
+
 
         else {
             return '404 PAGE NOT FOUND';
@@ -48,6 +53,12 @@ class App {
        $html = ob_get_contents();
        ob_clean();
        return $html;
+    }
+
+    public static function redirect($url) 
+    {
+        header('Location:' . URL . $url);
+        return '';
     }
 
 
