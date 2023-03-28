@@ -27,6 +27,10 @@ class App {
             return (new LoginController)->show();
         } 
 
+        if($method == 'POST' && count($url) == 1 && $url[0] === 'login') {
+            return (new LoginController)->login();
+        } 
+
 
         else {
             return '404 PAGE NOT FOUND';

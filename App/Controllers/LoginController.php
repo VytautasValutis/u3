@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 use App\App;
-// use App\Services\Auth;
+use App\Services\Auth;
 
 class LoginController {
 
