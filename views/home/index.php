@@ -7,4 +7,5 @@
         Trijų kortų bankelis 
     </h2>
     <p>ver.2 (c) MMXX3</p>
+    <a href="<?= URL ?>login" class="btn btn-secondary">Pradėti</a>
 </div>

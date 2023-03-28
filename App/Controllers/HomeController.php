@@ -6,7 +6,8 @@ class HomeController {
 
     public function home() {
         return App::view('home/index',[
-            'title' => 'Home'
+            'title' => 'Home',
+            'hideNav' => true
         ]);
     }
 }

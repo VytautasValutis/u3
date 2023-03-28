@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Controllers\HomeController;
+use App\Controllers\LoginController;
 
 class App {
     
@@ -21,6 +22,15 @@ class App {
         if($method == 'GET' && count($url) == 1 && $url[0] === '') {
             return (new HomeController)->home();
         } 
+
+        if($method == 'GET' && count($url) == 1 && $url[0] === 'login') {
+            return (new LoginController)->show();
+        } 
+
+
+        else {
+            return '404 PAGE NOT FOUND';
+        }
     }
 
     public static function view($tmp, $data = [])
