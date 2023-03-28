@@ -9,25 +9,25 @@ use App\Services\AccNum;
             <h1>Naujas klientas</h1>
         </div>
             <div class="card-body">
-                <form action="<?= URL ?>clients/create" method="post">
+                <form action="<?= URL ?>list/create" method="post">
                     <div class="mb-3">
                         <label class="form-label fs-4">Kliento vardas</label>
-                        <input type="text" class="form-control" name="name">
+                        <input type="text" class="form-control" name="name" value="<?= $name ?>">
                         <div class="form-text">Vatotojo vardas: min 3 simboliai</div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label fs-4">Kliento pavardė</label>
-                        <input type="text" class="form-control" name="surname">
+                        <input type="text" class="form-control" name="surname" value="<?= $surname ?>">
                         <div class="form-text">Vartotojo pavardė: min 3 simboliai</div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label fs-4">Kliento asmens kodas</label>
-                        <input type="text" class="form-control" name="persCode">
+                        <input type="text" class="form-control" name="persCode" value="<?= $persCode ?>">
                         <div class="form-text">Vartotojo asmens kodas</div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label fs-4">Kliento sąskaita</label>
-                        <input readonly type="text" class="form-control" name="accNum" value="<?= AccNum::get() ->accNr() ?>">
+                        <input readonly type="text" class="form-control" name="accNum" value="<?= $accNum ??AccNum::get() ->accNr() ?>">
                         <div class="form-text">Vartotojo sąskaitos nr. <span style="color: red">Keisti negalima</span></div>
                     </div>
                     <button type="submit" class="btn btn-primary">Patvirtinti</button>

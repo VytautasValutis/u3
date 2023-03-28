@@ -40,6 +40,10 @@ class App {
             return (new ClientsController)->create();
         } 
 
+        if($method == 'POST' && count($url) == 2 && $url[0] === 'list' && $url[1] === 'create') {
+            return (new ClientsController)->store();
+        } 
+
 
         else {
             return '404 PAGE NOT FOUND';

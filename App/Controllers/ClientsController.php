@@ -4,6 +4,8 @@ use App\App;
 use App\DB\Json;
 use App\Services\Auth;
 use App\Services\Messages;
+use App\Services\TestData;
+use App\Services\AccNum;
 
 class ClientsController {
 
@@ -27,20 +29,39 @@ class ClientsController {
     }
 
     public function create() {
-        return App::view('clients/create',[
-            'title' => 'New Client'
-        ]);
+        if(!isset($_SESSION['accNum'])) {
+            return App::view('clients/create',[
+                'title' => 'New Client'
+            ]);
+        } else {
+            return App::view('clients/create',[
+                'title' => 'New Client',
+                'name' => $_SESSION['name'],
+                'surname' => $_SESSION['surname'],
+                'persCode' => $_SESSION['persCode'],
+                'accNum' => $_SESSION['accNum'],
+            ]);
+        }
     }
 
     public function store() 
     {
+        if(!TestData::get()->test()) 
+        {
+            return App::redirect('list/create');
+        }
         $data = [];
-        $data['name'] = $_POST['name'];
-        $data['surname'] = $_POST['surname'];
-        $data['tt'] = isset($_POST['tt']) ? 1 : 0;
+        $data['name'] = $_SESSION['name'];
+        $data['surname'] = $_SESSION['surname'];
+        $data['persCode'] = $_SESSION['persCode'];
+        $data['accNum'] = $_SESSION['accNum'];
+        $data['id'] = AccNum::get()->idnr();
+        $data['value'] = 0;
         (new Json)->create($data);
-        Messages::msg()->addMessage('New clientis was created','success');
-        return App::redirect('clients');
+        Messages::msg()->addMessage('Sukurtas naujas klietas: ' . $data['accNum'],'success');
+        unset($_SESSION);
+        unset($data);
+        return App::redirect('list');
     }
 
     public function show($id) 
