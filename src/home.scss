@@ -1,0 +1,14 @@
+.home {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+     h1 {
+        color: blue;
+        font-size: 30px;
+        line-height: 1;
+        letter-spacing: 10px;
+    }
+}

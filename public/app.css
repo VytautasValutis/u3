@@ -10819,3 +10819,43 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.home {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
+.home h1, .home .h1 {
+  color: blue;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 10px;
+}
+
+.msg-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 30px;
+}
+.msg-container .msg-bin {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+form.logout {
+  display: inline-block;
+}
+form.logout button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
