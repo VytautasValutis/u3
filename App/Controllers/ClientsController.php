@@ -6,7 +6,7 @@ use App\Services\Auth;
 use App\Services\Messages;
 use App\Services\TestData;
 use App\Services\AccNum;
-use App\Services\SortAcc;
+use App\Services\SortCode;
 
 class ClientsController {
 
@@ -19,13 +19,17 @@ class ClientsController {
 
     }
 
-    public function list($sortCode); 
+    public function list($sortCodeOld, $sortCodeNew) 
     {
         $clients = (new Json)->showAll();
-        SortAcc::get()->sortA($clients, $sortCode);
+        $sortArr = SortCode::get()->sortA($clients, $sortCodeOld, $sortCodeNew);
         return App::view('clients/index',[
             'title' => 'Clients list',
-            'clients' => $clients
+            'clients' => $sortArr[0],
+            'sortOld' => $sortArr[1][0],
+            'a_sort' => $sortArr[1][1],
+            'd_sort' => $sortArr[1][2],
+            'e_sort' => $sortArr[1][3]
         ]);
 
     }
@@ -61,8 +65,10 @@ class ClientsController {
         $data['value'] = 0;
         (new Json)->create($data);
         Messages::msg()->addMessage('Sukurtas naujas klietas: ' . $data['accNum'],'success');
-        unset($_SESSION);
-        unset($data);
+        $user = $_SESSION['user'];
+        $_SESSION = [];
+        $_SESSION['user'] = $user;
+        $data = [];
         return App::redirect('list');
     }
 

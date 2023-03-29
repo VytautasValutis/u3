@@ -23,7 +23,7 @@ class AccNum {
     
     public function __destruct() 
     {
-        file_put_contents(__DIR__ . '/../DB/data.json', json_encode($this->num));
+        file_put_contents(__DIR__ . '/../DB/num.json', json_encode($this->num));
         unset($this->num);
     }
 

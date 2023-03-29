@@ -33,7 +33,7 @@ class App {
         } 
 
         if($method == 'GET' && count($url) == 1 && $url[0] === 'list') {
-            return (new ClientsController)->list('D0');
+            return (new ClientsController)->list('d','D');
         } 
 
         if($method == 'GET' && count($url) == 2 && $url[0] === 'list' && $url[1] === 'create') {
