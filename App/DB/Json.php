@@ -1,6 +1,7 @@
 <?php
 
 namespace App\DB;
+use App\Services\AccNum;
 
 use Ramsey\Uuid\Uuid;
 
@@ -10,23 +11,20 @@ class Json implements DataBase {
 
     public function __construct() 
     {
-        if(!file_exists(__DIR__ . '/data.json')) {
-            file_put_contents(__DIR__ . '/data.json', json_encode([]));
+        if(!file_exists(__DIR__ . '/accounts.json')) {
+            file_put_contents(__DIR__ . '/accounts.json', json_encode([]));
         }
-        $this->data = json_decode(file_get_contents(__DIR__ . '/data.json'), 1);
+        $this->data = json_decode(file_get_contents(__DIR__ . '/accounts.json'), 1);
     }
     
     public function __destruct() 
     {
-        file_put_contents(__DIR__ . '/data.json', json_encode($this->data));
+        file_put_contents(__DIR__ . '/accounts.json', json_encode($this->data));
     }
 
 
     function create(array $clientData) : void
     {
-        // $id = $uuid = Uuid::uuid4()->toString();
-        $id = rand(1000000, 9999999);
-        $clientData['id'] = $id;
         $this->data[] = $clientData;
     }
 

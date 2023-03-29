@@ -37,7 +37,7 @@ class AccNum {
     public function idNr() : int
     {
         $this->num++;
-        return $this->nr;
+        return $this->num;
     }
 
 }

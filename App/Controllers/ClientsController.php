@@ -6,6 +6,7 @@ use App\Services\Auth;
 use App\Services\Messages;
 use App\Services\TestData;
 use App\Services\AccNum;
+use App\Services\SortAcc;
 
 class ClientsController {
 
@@ -18,9 +19,10 @@ class ClientsController {
 
     }
 
-    public function list() 
+    public function list($sortCode); 
     {
         $clients = (new Json)->showAll();
+        SortAcc::get()->sortA($clients, $sortCode);
         return App::view('clients/index',[
             'title' => 'Clients list',
             'clients' => $clients

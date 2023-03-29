@@ -1,33 +1,39 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 ">
-    <div class="card mt-5">
-        <div class="card-header text-center">
-            <h1>Sąskaitų sąrašas</h1>
-        </div>
-            <div class="card-body">
-                <ul class="list-group">
-                  <?php foreach($clients as $client) : ?>
-                  <li class="list-group-item">
-                    <div class="client-line">
-                    <div class="client-info">
-                      <?= $client['name'] ?>
-                      <?= $client['surname'] ?>
-                      <span><?= $client['tt'] ? 'TIK TOK' : 'FB' ?></span>
-                    </div>
-                    <div class="buttons">
-                      <a href="<?= URL ?>clients/show/<?= $client['id'] ?>" class="btn btn-info">Show</a>
-                      <a href="<?= URL ?>clients/edit/<?= $client['id'] ?>" class="btn btn-success">Edit</a>
-                      <form action="<?= URL ?>clients/delete/<?= $client['id'] ?>" method="post">
-                      <button type="submit" class="btn btn-danger">Delete</button>
-                      </form>
-                    </div>
-                    </div>
-                  </li>  
-                  <?php endforeach ?>
-                </ul>
-            </div>
-        </div>
-    </div>
-  </div>
-</div>
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">
+                    <a href="./sarasas.php?sort=A" style="text-decoration: none;">
+                    # <span style="color: red;"><?= $a_sort ?></span></a></th>
+                <th scope="col">A.k.</th>
+                <th scope="col">Vardas</th>
+                <th scope="col">
+                    <a href="./sarasas.php?sort=D" style="text-decoration: none;">
+                    Pavardė <span style="color: red;"><?= $d_sort ?></span></a></th>
+                <th scope="col">
+                    <a href="./sarasas.php?sort=E" style="text-decoration: none;">
+                    Lėšos <span style="color: red;"><?= $e_sort ?></span></a></th>
+            </tr>
+        </thead>
+        <tbody>
+<?php foreach($clients as $v) : ?>            
+            <tr>
+                <th scope="row"><?= $v['accNum'] ?></th>
+                <td><?= $v['persCode'] ?></td>
+                <td><?= $v['name'] ?></td>
+                <td><?= $v['surname'] ?></td>
+                <td><b><?= $v['value'] ?></b></td>
+                <td>
+                    <a type="button" class="btn btn-outline-success" href="./prideti.php?id=<?= $v['id'] ?>">Prideti lėšų</a>
+                </td>
+                <td>
+                    <a type="button" class="btn btn-outline-primary" href="./nuskaiciuoti.php?id=<?= $v['id'] ?>">Nuskaičiuoti lėšas</a>
+                </td>
+                <td>
+                    <form action="./pasalinti.php?id=<?= $v['id'] ?>" method="post">
+                    <button type="submit" class="btn btn-outline-danger">Pašalinti sąskaitą</button>
+                    </form>
+                </td>
+            </tr>
+<?php endforeach ?>            
+        </tbody>
+    </table>
