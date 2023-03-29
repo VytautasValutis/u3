@@ -7,6 +7,7 @@ use App\Services\Messages;
 use App\Services\TestData;
 use App\Services\AccNum;
 use App\Services\SortCode;
+use App\Controllers\AccController;
 
 class ClientsController {
 
@@ -107,9 +108,14 @@ class ClientsController {
 
     public function delete($id) 
     {
+        if(AccController::isNotZero($id)) {
+            Messages::msg()->addMessage('Sąskaitoje ' . $_SESSION['accNum'] . ' yra lėšų. Pašalinti negalima.','danger');
+            return App::redirect('list');
+        }
         (new Json)->delete($id);
-        Messages::msg()->addMessage('The client gone','warning');
-        return App::redirect('clients');
+        Messages::msg()->addMessage('klientas pašalintas sąsk.nr.' . $_SESSION['accNum'],'success');
+        unset($_SESSION['accNr']);
+        return App::redirect('list');
     }
 
 }

@@ -29,7 +29,7 @@
                     <a type="button" class="btn btn-outline-primary" href="./nuskaiciuoti.php?id=<?= $v['id'] ?>">Nuskaičiuoti lėšas</a>
                 </td>
                 <td>
-                    <form action="./pasalinti.php?id=<?= $v['id'] ?>" method="post">
+                    <form action="<?= URL ?>list/delete/<?= $v['id'] ?>" method="post">
                     <button type="submit" class="btn btn-outline-danger">Pašalinti sąskaitą</button>
                     </form>
                 </td>
