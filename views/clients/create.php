@@ -28,7 +28,7 @@ use App\Services\PersCode;
                     </div>
                     <div class="mb-3">
                         <label class="form-label fs-4">Kliento sąskaita</label>
-                        <input readonly type="text" class="form-control" name="accNum" value="<?= $accNum ?? AccNum::get() ->accNr() ?>">
+                        <input readonly type="text" class="form-control" name="accNum" value="<?= $accNum ?? AccNum::get()->accNr() ?>">
                         <div class="form-text">Vartotojo sąskaitos nr. <span style="color: red">Keisti negalima</span></div>
                     </div>
                     <button type="submit" class="btn btn-primary">Patvirtinti</button>

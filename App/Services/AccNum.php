@@ -30,7 +30,7 @@ class AccNum {
     public function accNr() : string
     {
         $this->num++;
-        $sask_nr = 'LT3306660'.sprintf('%1$011d', $this->num);
+        $sask_nr = 'LT3306660' . sprintf('%1$011d', $this->num);
         return $sask_nr;
     }
 

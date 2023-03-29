@@ -114,7 +114,7 @@ class ClientsController {
         }
         (new Json)->delete($id);
         Messages::msg()->addMessage('klientas pašalintas sąsk.nr.' . $_SESSION['accNum'],'success');
-        unset($_SESSION['accNr']);
+        unset($_SESSION['accNum']);
         return App::redirect('list');
     }
 
