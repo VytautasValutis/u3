@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+use App\DB\Json;
 
 class PersCode {
 
@@ -106,4 +107,16 @@ class PersCode {
         if(ak_tst($ak1, (int) $met, $men, $dien, $sk) != $code) return false;
         return true;
     }
+
+    public function uniquePersCode($code) : bool
+    {
+        $clients = Json::get()->showAll();
+        foreach($clients as $client) {
+            if($client['persCode'] == $code) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

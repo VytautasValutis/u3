@@ -31,6 +31,10 @@ class TestData {
             Messages::msg()->addMessage('Neteisingas asmens kodas','danger');
             return false;
         }
+        if(!PersCode::get()->uniquePersCode($_SESSION['persCode'])) {
+            Messages::msg()->addMessage('Asmens kodas kartojasi','danger');
+            return false;
+        }
         return true;
     }
 }    

@@ -32,8 +32,8 @@ class App {
             return (new LoginController)->login();
         } 
 
-        if($method == 'GET' && count($url) == 1 && $url[0] === 'list') {
-            return (new ClientsController)->list('d','D');
+        if($method == 'GET' && count($url) == 3 && $url[0] === 'sort') {
+            return (new ClientsController)->list($url[1],$url[2]);
         } 
 
         if($method == 'GET' && count($url) == 2 && $url[0] === 'list' && $url[1] === 'create') {
@@ -56,6 +56,12 @@ class App {
 
     public static function view($tmp, $data = [])
     {
+        if($tmp == 'clients/index') {
+            echo'<pre>';
+            print_r($data);
+            die;
+        }
+
        extract($data);
        $path = __DIR__ . '/../views/';
        ob_start();

@@ -26,7 +26,7 @@ class ClientsController {
         $sortArr = SortCode::get()->sortA($clients, $sortCodeOld, $sortCodeNew);
         return App::view('clients/index',[
             'title' => 'Clients list',
-            'clients' => $sortArr[0],
+            'clients' => array_values($sortArr[0]),
             'sortOld' => $sortArr[1][0],
             'a_sort' => $sortArr[1][1],
             'd_sort' => $sortArr[1][2],

@@ -19,19 +19,19 @@ class SortCode
         $rez[1][0] = $codeN;
         if($codeN == 'A') {
             $rez[1][1] = mb_chr(0x21D3);
-            usort($arr, fn($a, $b) => $b['accNum'] <=> $a['accNum']);
+            usort($arr, fn($a, $b) => $a['accNum'] <=> $b['accNum']);
         }
         if($codeN == 'a') {
             $rez[1][1] = mb_chr(0x21D1);
-            usort($arr, fn($a, $b) => $a['accNum'] <=> $b['accNum']);
+            usort($arr, fn($a, $b) => $b['accNum'] <=> $a['accNum']);
         }
         if($codeN == 'D') {
             $rez[1][2] = mb_chr(0x21D3);
-            usort($arr, fn($a, $b) => $b['surname'] <=> $a['surname']);
+            usort($arr, fn($a, $b) => $a['surname'] <=> $b['surname']);
         }
         if($codeN == 'd') {
             $rez[1][2] = mb_chr(0x21D1);
-            usort($arr, fn($a, $b) => $a['surname'] <=> $b['surname']);
+            usort($arr, fn($a, $b) => $b['surname'] <=> $a['surname']);
         }
         if($codeN == 'E') {
             $rez[1][2] = mb_chr(0x21D3);
