@@ -23,7 +23,9 @@
                 <td><?= $v['surname'] ?></td>
                 <td><b><?= $v['value'] ?></b></td>
                 <td>
-                    <a type="button" class="btn btn-outline-success" href="./prideti.php?id=<?= $v['id'] ?>">Prideti lėšų</a>
+                    <form action="<?= URL ?>list/addVal/<?= $v['id'] ?>" method="post">
+                    <button type="submit" class="btn btn-outline-success">Prideti lėšų</button>
+                    </form>
                 </td>
                 <td>
                     <a type="button" class="btn btn-outline-primary" href="./nuskaiciuoti.php?id=<?= $v['id'] ?>">Nuskaičiuoti lėšas</a>

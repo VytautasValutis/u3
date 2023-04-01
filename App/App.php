@@ -44,6 +44,10 @@ class App {
             return (new ClientsController)->store();
         } 
 
+        if($method == 'POST' && count($url) == 3 && $url[0] === 'list' && $url[1] === 'addVal') {
+            return (new ClientsController)->addVal($url[2]);
+        } 
+
         if($method == 'POST' && count($url) == 3 && $url[0] === 'list' && $url[1] === 'delete') {
             return (new ClientsController)->delete($url[2]);
         } 
@@ -56,11 +60,11 @@ class App {
 
     public static function view($tmp, $data = [])
     {
-        if($tmp == 'clients/index') {
-            echo'<pre>';
-            print_r($data);
-            die;
-        }
+        // if($tmp == 'clients/index') {
+        //     echo'<pre>';
+        //     print_r($data);
+        //     die;
+        // }
 
        extract($data);
        $path = __DIR__ . '/../views/';

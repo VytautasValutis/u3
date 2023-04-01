@@ -70,7 +70,7 @@ class ClientsController {
         $_SESSION = [];
         $_SESSION['user'] = $user;
         $data = [];
-        return App::redirect('list');
+        return App::redirect('sort/d/D');
     }
 
     public function show($id) 
@@ -84,26 +84,29 @@ class ClientsController {
 
     }
 
-    public function edit($id) 
+    public function addVal($id) 
     {
-        $client = (new Json)->show($id);
+        if(isset($_POST['addValue'])) {
 
-        return App::view('clients/edit',[
+            // echo'<pre>';
+            // print_r($id);
+            // print_r($_POST);
+            // die;
+    
+            $temp = $_POST['addValue'];
+            unset($_POST['addValue']);
+            if(AccController::addValues($id, $temp)) {
+                Messages::msg()->addMessage('Lėšos pridėtos prie sąsk.Nr. ; ' . $_POST['accNum'],'success');
+                return App::redirect('sort/d/D');
+            } else {
+                Messages::msg()->addMessage('Neteisingai nurodytas lėšų kiekis','danger');
+            }
+        }
+        $client = (new Json)->show($id);
+        return App::view('clients/addVal',[
             'title' => 'Client edit',
             'client' => $client
         ]);
-
-    }
-
-    public function update($id) 
-    {
-        $data = [];
-        $data['name'] = $_POST['name'];
-        $data['surname'] = $_POST['surname'];
-        $data['tt'] = isset($_POST['tt']) ? 1 : 0;
-        (new Json)->update($id, $data);
-        Messages::msg()->addMessage('New clientis was edited','success');
-        return App::redirect('clients');
     }
 
     public function delete($id) 
@@ -115,7 +118,7 @@ class ClientsController {
         (new Json)->delete($id);
         Messages::msg()->addMessage('klientas pašalintas sąsk.nr.' . $_SESSION['accNum'],'success');
         unset($_SESSION['accNum']);
-        return App::redirect('list');
+        return App::redirect('sort/d/D');
     }
 
 }
