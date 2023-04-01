@@ -24,6 +24,10 @@ class App {
             return (new HomeController)->home();
         } 
 
+        if($method == 'POST' && count($url) == 1 && $url[0] === 'logout') {
+            return (new LoginController)->logout();
+        } 
+
         if($method == 'GET' && count($url) == 1 && $url[0] === 'login') {
             return (new LoginController)->show();
         } 

@@ -10839,6 +10839,10 @@ body {
   letter-spacing: 10px;
 }
 
+.lentele-bg {
+  background-color: #bbb;
+}
+
 .msg-container {
   display: flex;
   width: 100%;
