@@ -16,7 +16,7 @@ use App\Services\PersCode;
             <h1>Pridėti lėšų</h1>
         </div>
             <div class="card-body">
-                <form action="<?= URL ?>list/addVal" method="post">
+                <form action="<?= URL ?>list/addVal/<?= $client['id'] ?>" method="post">
                     <div class="mb-3">
                         <label class="form-label fs-4">Kliento vardas</label>
                         <input readonly type="text" class="form-control" name="name" value="<?= $client['name'] ?? ''?>">

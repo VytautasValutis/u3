@@ -22,12 +22,12 @@ class AccController {
 
     public static function addValues($id, $temp) : bool
     {
-        if(!isNumeric($temp)) return false;
+        if(!is_numeric($temp)) return false;
         $k = intval($temp);
         if($k < 0) return false;
         $updateClient = new Json;
         $data = $updateClient->show($id);
-        $data0['value'] += $k; 
+        $data['value'] += $k; 
         $updateClient->update($id, $data);
         return true;
   

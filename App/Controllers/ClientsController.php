@@ -87,6 +87,12 @@ class ClientsController {
     public function addVal($id) 
     {
         if(isset($_POST['addValue'])) {
+
+            // echo'<pre>';
+            // print_r($id);
+            // print_r($_POST);
+            // die;
+    
             $temp = $_POST['addValue'];
             unset($_POST['addValue']);
             if(AccController::addValues($id, $temp)) {
