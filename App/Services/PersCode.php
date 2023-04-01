@@ -110,7 +110,7 @@ class PersCode {
 
     public function uniquePersCode($code) : bool
     {
-        $clients = Json::get()->showAll();
+        $clients = (new Json)->showAll();
         foreach($clients as $client) {
             if($client['persCode'] == $code) {
                 return false;

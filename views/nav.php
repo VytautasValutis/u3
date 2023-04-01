@@ -15,7 +15,7 @@ use App\Services\Auth;
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link fw-bold fs-4" href="<?= URL ?>list">Sąskaitų sąrašas</a>
+          <a class="nav-link fw-bold fs-4" href="<?= URL ?>sort/d/D">Sąskaitų sąrašas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link fw-bold fs-4" href="<?= URL ?>list/create">Naujas klientas</a>
