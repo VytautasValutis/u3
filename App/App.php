@@ -48,6 +48,10 @@ class App {
             return (new ClientsController)->addVal($url[2]);
         } 
 
+        if($method == 'POST' && count($url) == 3 && $url[0] === 'list' && $url[1] === 'remVal') {
+            return (new ClientsController)->remVal($url[2]);
+        } 
+
         if($method == 'POST' && count($url) == 3 && $url[0] === 'list' && $url[1] === 'delete') {
             return (new ClientsController)->delete($url[2]);
         } 
