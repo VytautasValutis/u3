@@ -28,7 +28,9 @@
                     </form>
                 </td>
                 <td>
-                    <a type="button" class="btn btn-outline-primary" href="./nuskaiciuoti.php?id=<?= $v['id'] ?>">Nuskaičiuoti lėšas</a>
+                    <form action="<?= URL ?>list/remVal/<?= $v['id'] ?>" method="post">
+                    <button type="submit" class="btn btn-outline-primary">Nuskaičiuoti lėšas</button>
+                    </form>
                 </td>
                 <td>
                     <form action="<?= URL ?>list/delete/<?= $v['id'] ?>" method="post">

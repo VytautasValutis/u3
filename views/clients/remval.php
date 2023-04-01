@@ -13,10 +13,10 @@ use App\Services\PersCode;
     <div class="col-8 ">
     <div class="card mt-5">
         <div class="card-header lentele-bg">
-            <h1>Pridėti lėšų</h1>
+            <h1>Nurašyti lėšas</h1>
         </div>
             <div class="card-body">
-                <form action="<?= URL ?>list/addVal/<?= $client['id'] ?>" method="post">
+                <form action="<?= URL ?>list/remVal/<?= $client['id'] ?>" method="post">
                     <div class="mb-3">
                         <label class="form-label fs-4 w-auto">Kliento vardas</label>
                         <input readonly type="text" class="form-control w-50 d-inline-block float-end" name="name" value="<?= $client['name'] ?? ''?>">
@@ -38,8 +38,8 @@ use App\Services\PersCode;
                         <input readonly type="text" class="form-control w-50 d-inline-block float-end" name="value" value="<?= $client['value'] ?>">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fs-4 w-auto">Nurodykite pridedamų lėšų kiekį</label>
-                        <input type="text" class="form-control w-50 d-inline-block float-end" name="addValue" value="0">
+                        <label class="form-label fs-4 w-auto">Nurodykite nurašomų lėšų kiekį</label>
+                        <input type="text" class="form-control w-50 d-inline-block float-end" name="remValue" value="0">
                     </div>
                     <button type="submit" class="btn btn-primary">Patvirtinti</button>
                 </form>

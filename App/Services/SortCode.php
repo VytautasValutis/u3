@@ -35,11 +35,11 @@ class SortCode
         }
         if($codeN == 'E') {
             $rez[1][2] = mb_chr(0x21D3);
-            usort($arr, fn($a, $b) => $b['values'] - $a['values']);
+            usort($arr, fn($a, $b) => $b['value'] - $a['value']);
         }
         if($codeN == 'e') {
             $rez[1][2] = mb_chr(0x21D1);
-            usort($arr, fn($a, $b) => $a['values'] - $b['values']);
+            usort($arr, fn($a, $b) => $a['value'] - $b['value']);
         }
         $rez[0] = array_values($arr);
         return $rez;

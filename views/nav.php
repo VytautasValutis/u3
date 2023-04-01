@@ -2,7 +2,7 @@
 use App\Services\Auth;
 ?>
 <?php if(isset($hideNav)) return ?>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
   <div class="container-fluid">
     <a class="navbar-brand" href="<?= URL ?>">
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bank"           viewBox="0 0 16 16">

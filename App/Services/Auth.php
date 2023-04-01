@@ -38,7 +38,7 @@ class Auth {
         
         unset($_SESSION['user']);
         $this->user = null;
-        Messages::msg()->addMessage('You are out','info');
+        Messages::msg()->addMessage('Darbas baigtas','info');
     }
 
     public function isAuth() : bool

@@ -109,11 +109,39 @@ class ClientsController {
         ]);
     }
 
+    public function remVal($id) 
+    {
+        if(isset($_SESSION['lowAccValue']) && $_SESSION['lowAccValue']) {
+            unset($_SESSION['lowAccValue']);
+            Messages::msg()->addMessage('Sąskaitoje nepapkanka lėšų','danger');
+        } else {
+            if(isset($_POST['remValue'])) {
+                // echo'<pre>';
+                // print_r($id);
+                // print_r($_POST);
+                // die;
+                $temp = $_POST['remValue'];
+                unset($_POST['remValue']);
+                if(AccController::remValues($id, $temp)) {
+                    Messages::msg()->addMessage('Lėšos nurašytos nuo sąsk.Nr. ; ' . $_POST['accNum'],'success');
+                    return App::redirect('sort/d/D');
+                } else {
+                    Messages::msg()->addMessage('Neteisingai nurodytas nurašomų lėšų kiekis','danger');
+                }
+            }
+        }
+        $client = (new Json)->show($id);
+        return App::view('clients/remVal',[
+            'title' => 'Client edit',
+            'client' => $client
+        ]);
+    }
+
     public function delete($id) 
     {
         if(AccController::isNotZero($id)) {
             Messages::msg()->addMessage('Sąskaitoje ' . $_SESSION['accNum'] . ' yra lėšų. Pašalinti negalima.','danger');
-            return App::redirect('list');
+            return App::redirect('sort/d/D');
         }
         (new Json)->delete($id);
         Messages::msg()->addMessage('klientas pašalintas sąsk.nr.' . $_SESSION['accNum'],'success');
